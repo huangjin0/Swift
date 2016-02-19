@@ -9,7 +9,7 @@
 
 
 //study网址
-//http://wiki.jikexueyuan.com/project/swift/chapter1/02_a_swift_tour.html
+// http://wiki.jikexueyuan.com/project/swift/chapter1/02_a_swift_tour.html
 import UIKit
 
 class ViewController: UIViewController {
@@ -92,6 +92,100 @@ class ViewController: UIViewController {
         default:print("switch-default");
 
                }
+        
+        
+        //循环中使用..<来表示范围，也可以使用传统的写法，两者是等价的
+        // 使用..<创建的范围不包含上界，如果想包含的话需要使用...
+        for i in 0..<10{
+            
+            if i>=10{
+                print("最大数: \(i)");
+            }
+        }
+        
+        for i in 0...10 {
+            
+            if i>=10{
+            
+                print("最大数: \(i)");
+            }
+            
+        }
+        
+        /**
+        函数和闭包
+    
+        */
+        
+        //使用func 来申明一个函数，使用名字和参数调用参数。 使用->来指定函数的返回类型
+        
+        func greet(name:String,day:String)->String
+        {
+        
+       return "hello \(name),today is \(day).";
+       
+       }
+        let data = greet("Bob", day: "TuesDay");
+        
+        print(data);
+        
+        
+        //使用元组来让一个函数返回多个值。该元组的元素可以由数字和名称构成
+        
+        func caculateStatics(scores:[Int])->(min:Int,max:Int,sum:Int) {
+            var min = scores[0];
+            var max=scores[0];
+            var sum = 0;
+            for score in scores {
+            
+                if score > max
+                {
+                    max=score;
+                }else if score < min {
+               
+                    min=score;
+                }
+                sum += score;
+                
+                
+            }
+            return(min,max,sum);
+        
+        }
+        
+        
+        //调用方法： 
+        let statistics = caculateStatics([1,2,4,44,89]);
+        print(statistics.sum);
+        print(statistics.1);
+        
+        //可变参数的函数申明
+        
+        func sumOf(numbers:Int ...)->Int{
+            var sum=0;
+            for number in numbers
+            {
+                sum+=number;
+            
+            }
+            
+            return sum;
+        }
+        print("数字总和 \(sumOf())");
+        print("数字总和 \(sumOf(1,2,3))");
+        //函数可以嵌套
+        
+        func returnFifften()->Int{
+        
+            var number=10;
+            func add() {
+                number += 5;
+            }
+            add();
+            return number;
+        }
+        
+        print("returnFifften: \(returnFifften())");
         
         
         
